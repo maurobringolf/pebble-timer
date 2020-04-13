@@ -9,7 +9,8 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
 
-  config.vm.synced_folder "timer/", "/home/vagrant/timer"
+  config.vm.synced_folder "timer/", "/home/ubuntu/timer",
+  	owner: "ubuntu"
   
   VAGRANT_COMMAND = ARGV[0]
   if VAGRANT_COMMAND == "ssh"
