@@ -1,0 +1,8 @@
+argv = ['/home/ubuntu/.pebble-sdk/SDKs/current/sdk-core/pebble/waf', 'configure']
+environ = {'HOME': '/home/ubuntu', 'LOGNAME': 'ubuntu', 'USER': 'ubuntu', 'NO_GCE_CHECK': 'False', 'PEBBLE_TOOLCHAIN_PATH': '/home/ubuntu/pebble-dev/pebble-sdk-4.5-linux64/arm-cs-tools/bin', 'PATH': '/home/ubuntu/pebble-dev/pebble-sdk-4.5-linux64/arm-cs-tools/bin:/home/ubuntu/pebble-dev/pebble-sdk-4.5-linux64/bin:/home/ubuntu/pebble-dev/pebble-sdk-4.5-linux64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', '_': '/home/ubuntu/pebble-dev/pebble-sdk-4.5-linux64/.env/bin/python', 'LANG': 'en_US.UTF-8', 'TERM': 'xterm', 'SHELL': '/bin/bash', 'SHLVL': '2', 'PYTHONHOME': '/home/ubuntu/.pebble-sdk/SDKs/current/sdk-core/../.env', 'NODE_PATH': '/home/ubuntu/.pebble-sdk/SDKs/current/sdk-core/../node_modules', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PWD': '/home/ubuntu/timer', 'MAIL': '/var/mail/ubuntu', 'PHONESIM_PATH': '/home/ubuntu/pebble-dev/pebble-sdk-4.5-linux64/.env//bin/pypkjs', 'NOCLIMB': '1'}
+files = ['/home/ubuntu/timer/wscript']
+hash = 6211277306917996440
+options = {'files': '', 'jobs': 2, 'verbose': 0, 'nocache': False, 'progress_bar': 0, 'no_groups': False, 'distcheck_args': None, 'top': '', 'sandbox': False, 'destdir': '', 'keep': 0, 'zones': '', 'debug': False, 'prefix': '/usr/local/', 'timestamp': None, 'download': False, 'force': False, 'targets': '', 'out': ''}
+out_dir = '/home/ubuntu/timer/build'
+run_dir = '/home/ubuntu/timer'
+top_dir = '/home/ubuntu/timer'
