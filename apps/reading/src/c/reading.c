@@ -10,9 +10,15 @@ static char time_display[10];
 
 static bool RUNNING = false;
 
+#define PASSIVE_COLOR GColorBlack
+#define ACTIVE_COLOR GColorMediumSpringGreen 
+#define FONT_COLOR RUNNING ? ACTIVE_COLOR : PASSIVE_COLOR
+#define BACKGROUND_COLOR GColorWhite
+
 static void set_time() {
 	persist_write_int(STORAGE_KEY, time_value);
 	snprintf(time_display, 10, "%d", time_value);
+	text_layer_set_text_color(s_text_layer, FONT_COLOR );
 	text_layer_set_text(s_text_layer, time_display);
 }
 
@@ -21,6 +27,13 @@ static void stop() {
 	APP_LOG(APP_LOG_LEVEL_DEBUG, "STOP. time_value: %d", time_value);
 	tick_timer_service_unsubscribe();
 	RUNNING = false;
+	text_layer_set_text_color(s_text_layer, FONT_COLOR );
+}
+
+static void reset() {
+	stop();
+	time_value = 0;
+	set_time();
 }
 
 static void tick(struct tm *tick_time, TimeUnits units_changed) {
@@ -30,6 +43,7 @@ static void tick(struct tm *tick_time, TimeUnits units_changed) {
 	}
 	set_time();
 	RUNNING = true;
+	text_layer_set_text_color(s_text_layer, FONT_COLOR );
 }
 
 static void start() {
@@ -47,9 +61,14 @@ static void prv_up_click_handler(ClickRecognizerRef recognizer, void *context) {
 	stop();
 }
 
+static void prv_down_click_handler(ClickRecognizerRef recognizer, void *context) {
+	reset();
+}
+
 static void prv_click_config_provider(void *context) {
 	window_single_click_subscribe(BUTTON_ID_SELECT, prv_select_click_handler);
 	window_single_click_subscribe(BUTTON_ID_UP, prv_up_click_handler);
+	window_single_click_subscribe(BUTTON_ID_DOWN, prv_down_click_handler);
 }
 
 
@@ -60,6 +79,8 @@ static void prv_window_load(Window *window) {
 	s_text_layer = text_layer_create(GRect(0, 55, bounds.size.w, bounds.size.h));
 
 	text_layer_set_font(s_text_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_MEDIUM_NUMBERS));
+	text_layer_set_text_color(s_text_layer, FONT_COLOR);
+	text_layer_set_background_color(s_text_layer, BACKGROUND_COLOR);
 	text_layer_set_text_alignment(s_text_layer, GTextAlignmentCenter);
 
 	set_time();
